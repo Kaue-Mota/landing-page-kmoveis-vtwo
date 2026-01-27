@@ -32,9 +32,9 @@ export const Main = () => {
           <div className="scroll-item md:col-span-1 md:row-span-1 col-span-2 rounded-2xl overflow-hidden">
             <div className="relative w-full h-full">
               <img
-                src="/images/produto-11.jpg"
+                src="/images/bg2.png"
                 alt="Produto destaque"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+                className="w-full h-full object-left object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
               <div className="absolute inset-0 bg-[linear-gradient(-20deg,transparent_0%,rgba(34,197,94,.3)_100%)] bg-opacity-50 hover:opacity-0 transition-opacity duration-300"></div>
             </div>

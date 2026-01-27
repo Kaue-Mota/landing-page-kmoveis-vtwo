@@ -30,3 +30,7 @@
 .underline-expand:hover::after {
   width: 100%;
 }
+
+  .menu-toggle:checked ~ .nav-slide {
+      right: 0;
+   }

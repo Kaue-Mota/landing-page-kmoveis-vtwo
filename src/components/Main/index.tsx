@@ -4,12 +4,12 @@ export const Main = () => {
   return (
     <main className="px-10 py-10">
       <section className="  bg-[linear-gradient(-90deg,transparent_0%,rgba(34,197,94,.3)_100%),url('/public/images/hero-section-bg.png')] bg-cover bg-center bg-100% w-full h-200 pt-20 px-10 flex items-center rounded-4xl">
-        <div className=" p-10 rounded-3xl text-white ml-30">
-          <h1 className=" mb-2 text-6xl">
+        <div className=" flex flex-col  items-center text-white md:items-start md:ml-30">
+          <h1 className=" mb-2 text-5xl text-center md:text-left">
             Móveis planejados <br /> sob medida para <br />o seu estilo.
           </h1>
 
-          <p className="mb-2">
+          <p className="mb-2 text-center md:inline-block md:text-left hidden">
             Transformamos ambientes em espaços únicos, <br /> funcionais e
             elegantes, feitos do jeito que você sonhou.
           </p>
@@ -22,10 +22,10 @@ export const Main = () => {
 
       {/* GALERIA ===========================*/}
 
-      <section className=" py-16">
+      <section className="mt-20 py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 h-auto">
           {/* Item grande - 2 linhas no md+ */}
-          <div className="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden">
+          <div className="md:col-span-1 md:row-span-1 col-span-2 rounded-2xl overflow-hidden">
             <div className="relative w-full h-full">
               <img
                 src="/images/produto-11.jpg"
@@ -37,7 +37,7 @@ export const Main = () => {
           </div>
 
           {/* Grid de itens pequenos */}
-          <div className="md:col-span-2 grid grid-cols-3 gap-4">
+          <div className="md:col-span-2 grid grid-cols-2 col-span-2 gap-4">
             <div className="rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
                 src="/images/produto-37.jpg"
@@ -88,12 +88,12 @@ export const Main = () => {
 
       {/* AVALIAÇÕES ============================= */}
 
-      <section className="bg-[url(/images/bg2.png)] py-16 px-10 rounded-4xl bg-cover bg-no-repeat ">
-
-      
-        <h1 className="text-4xl font-bold text-center mb-12 text-white drop-shadow-lg">
+      <h1 className="text-2xl font-bold text-center mb-5 mt-20 text-neutral-600 border-b-2 border-b-neutral-600 pb-5 ">
           Clientes Satisfeitos
         </h1>
+
+      <section className=" py-16 px-10 rounded-4xl bg-cover bg-no-repeat ">
+        
         <div className="flex flex-wrap justify-center gap-8">
           <ReviewCard
             image="https://lh3.googleusercontent.com/a-/ALV-UjUeL2RSDGuRXHqD0ZF1DdKi5m_Yc91_azQvf4Hk0V0h7LnNe8bY=s36-c-rp-mo-br100"
@@ -122,7 +122,6 @@ Valmir Floriano Vieira de Andrade"
             name="
 Leonardo Azevedo"
           />
-
         </div>
       </section>
     </main>

@@ -24,24 +24,28 @@ export const ReviewCard = ({ image, text, stars, name }: ReviewCardProps) => {
   };
 
   return (
-    <div className="bg-[rgba(80,80,80,0.1)] rounded-4xl shadow-lg p-6 w-80  hover:scale-105 transition-transform duration-300 backdrop-blur-lg ">
+    <div className="bg-[rgba(80,80,80,0)] rounded-4xl shadow-lg p-6 w-80  hover:scale-105 transition-transform duration-300 backdrop-blur-lg ">
       {/* Foto do cliente */}
+      
       <img
         src={image}
         alt={name || "Cliente"}
-        className="w-10 h-10 rounded-full object-cover mx-auto mb-4 border-2 border-white"
+        className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-white"
       />
 
       {/* Nome do cliente (opcional) */}
       {name && (
-        <p className="text-center font-semibold text-neutral-600"> {name}</p>
+        <p className="text-center font-semibold text-neutral-600 "> {name}</p>
       )}
+
+      
+    
+
+      {/* Texto da avaliação */}
+      <p className="text-neutral-600 drop-shadow-md text-center mb-4 italic pb-5 border-b">"{text}"</p>
 
       {/* Estrelas */}
       <div className="flex justify-center mb-4">{renderStars(stars)}</div>
-
-      {/* Texto da avaliação */}
-      <p className="text-neutral-600 drop-shadow-md text-center mb-4 italic">"{text}"</p>
 
       
     </div>

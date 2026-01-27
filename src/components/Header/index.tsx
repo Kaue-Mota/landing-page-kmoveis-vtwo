@@ -16,12 +16,37 @@ export const Header = () => {
         className="menu-toggle w-10 hidden"
         id="menu-toggle"
       />
-      <label htmlFor="menu-toggle" className="">
+      <label htmlFor="menu-toggle" className="lg:hidden">
         <img className="w-10 brightness-10 drop-shadow-md invert cursor-pointer" src="/images/icon/hamb.svg" alt="menu mobile" />
       </label>
 
-      <nav className=" bg-[rgba(71,133,31,0.8)] rounded-2xl z-101 fixed top-22 -right-full transition-right duration-300 items-start p-5 nav-slide backdrop-blur-lg">
+      <nav className="lg:hidden bg-[rgba(255,255,255,1)] text-black rounded-2xl z-101 fixed top-22 -right-full transition-right duration-300 items-start p-5 nav-slide backdrop-blur-lg  ">
         <ul className="flex flex-col justify-between gap-1 drop-shadow-md">
+          <li className="p-2 mt-5 hover:text-green-400 transition-colors duration-200 cursor-pointer">
+            <a href="" className="underline-expand">
+              Sobre
+            </a>
+          </li>
+          <li className="p-2 mt-5 hover:text-green-400 transition-colors duration-200 cursor-pointer">
+            <a href="" className="underline-expand">
+              Mostruário
+            </a>
+          </li>
+          <li className="p-2 mt-5 hover:text-green-400 transition-colors duration-200 cursor-pointer">
+            <a href="" className="underline-expand">
+              Projetos
+            </a>
+          </li>
+          <li className="mr-5 mt-5 bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200">
+            <a href="" className="text-white">
+              Contato
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav className=" text-white hidden lg:inline-block">
+        <ul className="flex text-center justify-between gap-1 drop-shadow-md">
           <li className="p-2 hover:text-green-400 transition-colors duration-200 cursor-pointer">
             <a href="" className="underline-expand">
               Sobre
@@ -37,7 +62,7 @@ export const Header = () => {
               Projetos
             </a>
           </li>
-          <li className="mr-5 bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200">
+          <li className="mr-5  bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200">
             <a href="" className="text-white">
               Contato
             </a>

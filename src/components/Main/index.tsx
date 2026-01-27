@@ -3,7 +3,7 @@ import { ReviewCard } from "../ReviewCard";
 export const Main = () => {
   return (
     <main className="px-10 py-10">
-      <section className="  bg-[linear-gradient(-90deg,transparent_0%,rgba(34,197,94,.3)_100%),url('/public/images/hero-section-bg.png')] bg-cover bg-center bg-100% w-full h-200 pt-20 px-10 flex items-center rounded-4xl">
+      <section className="  bg-[linear-gradient(-90deg,transparent_0%,rgba(34,197,94,.3)_100%),url('/public/images/hero-section-bg.png')] bg-cover bg-bottom bg-100% w-full h-200 pt-20 px-10 flex items-center rounded-4xl">
         <div className=" flex flex-col  items-center text-white md:items-start md:ml-30">
           <h1 className=" mb-2 text-5xl text-center md:text-left">
             Móveis planejados <br /> sob medida para <br />o seu estilo.
@@ -14,7 +14,7 @@ export const Main = () => {
             elegantes, feitos do jeito que você sonhou.
           </p>
 
-          <button className=" bg-[#2e9e53] w-70 h-20 text-2xl p-5 mt-7 rounded-3xl backdrop-blur-md  text-white ">
+          <button className=" bg-[#2e9e53] w-70 h-20 text-2xl p-5 mt-7 rounded-3xl backdrop-blur-md  text-white hover:scale-105 hover:cursor-pointer hover:bg-[#37b661]">
             Solicitar Orçamento
           </button>
         </div>

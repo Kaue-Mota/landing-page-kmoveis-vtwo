@@ -1,9 +1,13 @@
 import { ReviewCard } from "../ReviewCard";
+import { useScrollAnimation, useScrollAnimationChildren } from "../../hooks/useScrollAnimation";
 
 export const Main = () => {
+  const heroRef = useScrollAnimation();
+  const galleryRef = useScrollAnimationChildren();
+  const reviewsRef = useScrollAnimation();
   return (
     <main className="px-5 lg:px-50 lg:py-5 py-5">
-      <section className=" px-2  bg-[linear-gradient(-90deg,transparent_0%,rgba(34,197,94,.3)_100%),url('/public/images/hero-section-bg.png')] bg-cover bg-bottom bg-100% w-full h-150 lg:h-200 pt-20 flex md:justify-start items-center justify-center rounded-4xl">
+      <section ref={heroRef} className="scroll-section px-2  bg-[linear-gradient(-90deg,transparent_0%,rgba(34,197,94,.3)_100%),url('/images/hero-section-bg.png')] bg-cover bg-bottom bg-100% w-full h-150 lg:h-200 pt-20 flex md:justify-start items-center justify-center rounded-4xl">
         <div className=" flex flex-col  items-center text-white md:items-start md:ml-30">
           <h1 className=" mb-2 text-3xl md:text-5xl text-center md:text-left">
             Móveis planejados <br /> sob medida para <br />o seu estilo.
@@ -22,10 +26,10 @@ export const Main = () => {
 
       {/* GALERIA ===========================*/}
 
-      <section className="mt-20 ">
+      <section ref={galleryRef} className="mt-20 ">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 h-auto">
           {/* Item grande - 2 linhas no md+ */}
-          <div className="md:col-span-1 md:row-span-1 col-span-2 rounded-2xl overflow-hidden">
+          <div className="scroll-item md:col-span-1 md:row-span-1 col-span-2 rounded-2xl overflow-hidden">
             <div className="relative w-full h-full">
               <img
                 src="/images/produto-11.jpg"
@@ -38,28 +42,28 @@ export const Main = () => {
 
           {/* Grid de itens pequenos */}
           <div className="md:col-span-2 grid grid-cols-2 col-span-2 gap-4">
-            <div className="rounded-2xl overflow-hidden h-48 md:h-auto">
+            <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
                 src="/images/produto-37.jpg"
                 alt="Produto 1"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
             </div>
-            <div className="rounded-2xl overflow-hidden h-48 md:h-auto">
+            <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
                 src="/images/produto-41.jpg"
                 alt="Produto 2"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
             </div>
-            <div className="rounded-2xl overflow-hidden h-48 md:h-auto">
+            <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
                 src="/images/produto-15.jpg"
                 alt="Produto 3"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
             </div>
-            <div className="rounded-2xl overflow-hidden h-48 md:h-auto">
+            <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
                 src="/images/produto-33.jpg"
                 alt="Produto 4"
@@ -67,7 +71,7 @@ export const Main = () => {
               />
             </div>
 
-            <div className="rounded-2xl overflow-hidden h-48 md:h-auto">
+            <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
                 src="/images/produto-100.jpeg"
                 alt="Produto 4"
@@ -75,7 +79,7 @@ export const Main = () => {
               />
             </div>
 
-            <div className="rounded-2xl overflow-hidden h-48 md:h-auto">
+            <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
                 src="/images/hero-section-bg.png"
                 alt="Produto 4"
@@ -88,7 +92,7 @@ export const Main = () => {
 
       {/* AVALIAÇÕES ============================= */}
 
-      <h1 className="text-2xl font-bold text-center mb-5 mt-20 text-neutral-600 border-t-2 border-b-neutral-600 pt-5 ">
+      <h1 ref={reviewsRef} className="scroll-section text-2xl font-bold text-center mb-5 mt-20 text-neutral-600 border-t-2 border-b-neutral-600 pt-5 ">
         Clientes Satisfeitos
       </h1>
 

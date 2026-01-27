@@ -34,3 +34,26 @@
   .menu-toggle:checked ~ .nav-slide {
       right: 0;
    }
+
+/* Animações de Scroll */
+.scroll-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-item {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.6s ease-out;
+}
+
+.scroll-item.animate-in {
+  opacity: 1;
+  transform: scale(1);
+}

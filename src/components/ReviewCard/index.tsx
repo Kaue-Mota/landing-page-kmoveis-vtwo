@@ -1,3 +1,5 @@
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+
 interface ReviewCardProps {
   image: string;
   text: string;
@@ -6,6 +8,8 @@ interface ReviewCardProps {
 }
 
 export const ReviewCard = ({ image, text, stars, name }: ReviewCardProps) => {
+  const cardRef = useScrollAnimation();
+
   const renderStars = (count: number) => {
     return (
       <div className="flex gap-1">
@@ -24,7 +28,7 @@ export const ReviewCard = ({ image, text, stars, name }: ReviewCardProps) => {
   };
 
   return (
-    <div className="bg-[rgba(80,80,80,0)] rounded-4xl shadow-lg p-6 w-80  hover:scale-105 transition-transform duration-300 backdrop-blur-lg ">
+    <div ref={cardRef} className="scroll-item bg-[rgba(80,80,80,0)] rounded-4xl shadow-lg p-6 w-80  hover:scale-105 transition-transform duration-300 backdrop-blur-lg ">
       {/* Foto do cliente */}
 
       <img

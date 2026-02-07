@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export const useScrollAnimation = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -8,15 +8,15 @@ export const useScrollAnimation = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
+            entry.target.classList.add("animate-in");
             observer.unobserve(entry.target);
           }
         });
       },
       {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-      }
+        rootMargin: "0px 0px -50px 0px",
+      },
     );
 
     if (ref.current) {
@@ -41,18 +41,18 @@ export const useScrollAnimationChildren = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
+            entry.target.classList.add("animate-in");
           }
         });
       },
       {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-      }
+        rootMargin: "0px 0px -50px 0px",
+      },
     );
 
     if (ref.current) {
-      const children = ref.current.querySelectorAll('.scroll-item');
+      const children = ref.current.querySelectorAll(".scroll-item");
       children.forEach((child) => observer.observe(child));
     }
 
@@ -62,4 +62,38 @@ export const useScrollAnimationChildren = () => {
   }, []);
 
   return ref;
+};
+
+
+
+export const useScrollAnimationChildrenCatalago = (dependency?: unknown) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const items = container.querySelectorAll(".scroll-item");
+    if (!items.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target); // anima só 1 vez
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    items.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, [dependency]); // 👈 ESSENCIAL
+
+  return containerRef;
 };

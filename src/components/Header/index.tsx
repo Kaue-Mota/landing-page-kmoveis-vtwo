@@ -1,15 +1,16 @@
+import { Link } from "react-router-dom";
 import "../../styles/global.css";
 
 export const Header = () => {
   return (
     <header className="shadow-md flex z-100 justify-between flex-row fixed lg:bg-[rgba(255,255,255,01)]  bg-[#ffffff] px-5 py-1 top-20 lg:top-20 left-[50%] translate-[-50%] w-[70%] md:w-[70%] lg:w-[60%] xl:w-[75%] max-w-8xl rounded-3xl backdrop-blur-lg  items-center lg:text-1xl">
-      <a href="#">
+      <Link to="/">
         <img
           className="w-full h-10 md:h-20 object-cover drop-shadow-md scale-110"
           src="/images/logo/logo-transp.png"
           alt=""
         />
-      </a>
+      </Link>
 
       <input
         type="checkbox"
@@ -24,47 +25,48 @@ export const Header = () => {
         />
       </label>
 
+      {/*NAV MOBILE*/}
       <nav className="lg:hidden bg-[rgba(255,255,255,1)] text-black rounded-2xl z-101 fixed top-22 right-[-130%] transition-right duration-300 items-start p-5 nav-slide backdrop-blur-lg  ">
         <ul className="flex flex-col justify-between gap-1 drop-shadow-md">
           <li className="p-2 mt-5 hover:text-green-400 transition-colors duration-200 cursor-pointer">
-            <a href="" className="underline-expand">
+            <Link className="underline-expand" to="/about">
               Sobre
-            </a>
+            </Link>
           </li>
           <li className="p-2 mt-5 hover:text-green-400 transition-colors duration-200 cursor-pointer">
-            <a href="" className="underline-expand">
-              Mostruário
-            </a>
-          </li>
-          <li className="p-2 mt-5 hover:text-green-400 transition-colors duration-200 cursor-pointer">
-            <a href="" className="underline-expand">
+            <Link className="underline-expand" to="/projetos">
               Projetos
-            </a>
+            </Link>
           </li>
-          <li className="mr-5 mt-5 bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200">
-            <a href="" className="text-white">
+          <li className="p-2 mt-5 hover:text-green-400 transition-colors duration-200 cursor-pointer">
+            <Link className="underline-expand" to="/catalago">
+              Catálago
+            </Link>
+          </li>
+          <li className="flex mr-5 mt-5 bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200 justify-center">
+            <Link className=" text-white text-center " to="/contato">
               Contato
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
-
+      {/*NAV DESKTOP*/}
       <nav className=" text-black hidden lg:inline-block">
         <ul className="flex text-center justify-between gap-5 drop-shadow-md ">
           <li className="p-2 hover:text-green-400 transition-colors duration-200 cursor-pointer">
-            <a href="" className="underline-expand">
+            <Link className="underline-expand" to="/about">
               Sobre
-            </a>
+            </Link>
           </li>
           <li className="p-2 hover:text-green-400 transition-colors duration-200 cursor-pointer">
-            <a href="" className="underline-expand">
-              Mostruário
-            </a>
-          </li>
-          <li className="p-2 hover:text-green-400 transition-colors duration-200 cursor-pointer">
-            <a href="" className="underline-expand">
+            <Link className="underline-expand" to="/projetos">
               Projetos
-            </a>
+            </Link>
+          </li>
+          <li className="p-2 hover:text-green-400 transition-colors duration-200 cursor-pointer">
+            <Link className="underline-expand" to="/catalago">
+              Catálago
+            </Link>
           </li>
           <li className="mr-5  bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200">
             <a href="" className="text-white">

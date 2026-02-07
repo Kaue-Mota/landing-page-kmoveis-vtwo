@@ -57,3 +57,8 @@
   opacity: 1;
   transform: scale(1);
 }
+
+.scroll-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}

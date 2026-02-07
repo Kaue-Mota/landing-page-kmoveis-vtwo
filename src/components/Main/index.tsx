@@ -7,7 +7,7 @@ export const Main = () => {
   const reviewsRef = useScrollAnimation();
   return (
     <main className="px-5 lg:px-50 lg:py-5 py-5">
-      <section ref={heroRef} className="scroll-section px-2  bg-[linear-gradient(-90deg,transparent_0%,rgba(34,197,94,.3)_100%),url('/images/hero-section-bg.png')] bg-cover bg-bottom bg-100% w-full h-150 lg:h-200 pt-20 flex md:justify-start items-center justify-center rounded-4xl">
+      <section ref={heroRef} className="scroll-section px-2  bg-[linear-gradient(-90deg,transparent_0%,rgba(34,197,94,.3)_100%),url('/images/hero-section-bg.webp')] bg-cover bg-bottom bg-100% w-full h-150 lg:h-200 pt-20 flex md:justify-start items-center justify-center rounded-4xl">
         <div className=" flex flex-col  items-center text-white md:items-start md:ml-30">
           <h1 className=" mb-2 text-3xl md:text-5xl text-center md:text-left">
             Móveis planejados <br /> sob medida para <br />o seu estilo.
@@ -32,9 +32,9 @@ export const Main = () => {
           <div className="scroll-item md:col-span-1 md:row-span-1 col-span-2 rounded-2xl overflow-hidden">
             <div className="relative w-full h-full">
               <img
-                src="/images/bg2.png"
-                alt="Produto destaque"
-                className="w-full h-full object-left object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+          src="/images/galeri-grid/bg2.png"
+          alt="Produto destaque"
+          className="w-full h-full object-left object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
               <div className="absolute inset-0 bg-[linear-gradient(-20deg,transparent_0%,rgba(34,197,94,.3)_100%)] bg-opacity-50 hover:opacity-0 transition-opacity duration-300"></div>
             </div>
@@ -44,46 +44,46 @@ export const Main = () => {
           <div className="md:col-span-2 grid grid-cols-2 col-span-2 gap-4">
             <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
-                src="/images/produto-37.jpg"
-                alt="Produto 1"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+          src="/images/galeri-grid/produto-37.jpg"
+          alt="Produto 1"
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
             </div>
             <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
-                src="/images/produto-41.jpg"
-                alt="Produto 2"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+          src="/images/galeri-grid/produto-41.jpg"
+          alt="Produto 2"
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
             </div>
             <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
-                src="/images/produto-15.jpg"
-                alt="Produto 3"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+          src="/images/galeri-grid/produto-15.jpg"
+          alt="Produto 3"
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
             </div>
             <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
-                src="/images/produto-33.jpg"
-                alt="Produto 4"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
-              />
-            </div>
-
-            <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
-              <img
-                src="/images/produto-100.jpeg"
-                alt="Produto 4"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+          src="/images/galeri-grid/produto-33.jpg"
+          alt="Produto 4"
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
             </div>
 
             <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
               <img
-                src="/images/hero-section-bg.png"
-                alt="Produto 4"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+          src="/images/galeri-grid/produto-100.jpeg"
+          alt="Produto 5"
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+              />
+            </div>
+
+            <div className="scroll-item rounded-2xl overflow-hidden h-48 md:h-auto">
+              <img
+          src="/images/galeri-grid/hero-section-bg.webp"
+          alt="Produto 6"
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />
             </div>
           </div>
@@ -100,7 +100,7 @@ export const Main = () => {
         <div className="flex flex-wrap justify-center gap-8">
           <ReviewCard
             image="https://lh3.googleusercontent.com/a-/ALV-UjUeL2RSDGuRXHqD0ZF1DdKi5m_Yc91_azQvf4Hk0V0h7LnNe8bY=s36-c-rp-mo-br100"
-            text="Recomendo. Excelente preço, material utilizado, acabamento, detalhes, projeto, qualidade dos serviços e entrega bem antes do prazo!"
+            text="Recomendo. Excelente preço, material utilizado, acabamento, detalhes, projeto, qualidade dos serviços e entrega bem antes do prazo                     !                                                                                   "
             stars={5}
             name="
 Valmir"

@@ -31,11 +31,7 @@ export const ReviewCard = ({ image, text, stars, name }: ReviewCardProps) => {
     <div ref={cardRef} className="scroll-item bg-[rgba(80,80,80,0)] rounded-4xl shadow-lg p-6 w-80  hover:scale-105 transition-transform duration-300 backdrop-blur-lg ">
       {/* Foto do cliente */}
 
-      <img
-        src={image}
-        alt={name || "Cliente"}
-        className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-white"
-      />
+    
 
       {/* Nome do cliente (opcional) */}
       {name && (

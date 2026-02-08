@@ -44,9 +44,10 @@ export const Header = () => {
             </Link>
           </li>
           <li className="flex mr-5 mt-5 bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200 justify-center">
-            <Link className=" text-white text-center " to="/contato">
+            <a href="https://wa.link/75dyp7"
+            target="_blank" className="text-white">
               Contato
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>
@@ -69,7 +70,8 @@ export const Header = () => {
             </Link>
           </li>
           <li className="mr-5  bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200">
-            <a href="" className="text-white">
+            <a href="https://wa.link/75dyp7"
+            target="_blank" className="text-white">
               Contato
             </a>
           </li>

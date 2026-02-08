@@ -49,6 +49,7 @@ export const About = () => {
           </p>
           <a
             href="https://wa.link/75dyp7"
+            target="_blank"
             className="scroll-item inline-block px-8 py-4 bg-green-700 text-white font-semibold rounded-lg shadow-md hover:scale-105 transition"
           >
             Solicitar orçamento

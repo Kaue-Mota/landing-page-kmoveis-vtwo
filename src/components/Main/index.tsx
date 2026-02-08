@@ -24,8 +24,12 @@ export const Main = () => {
             elegantes, feitos do jeito que você sonhou.
           </p>
 
-          <a href="https://wa.link/75dyp7" className=" flex justify-center items-center bg-[#2e9e53] md:w-70 md:h-20 w-30 text-1xl md:text-2xl p-5 mt-7 rounded-3xl backdrop-blur-md  text-white hover:scale-105 hover:cursor-pointer hover:bg-[#37b661]">
-            <span >Solicitar Orçamento</span>
+          <a
+            href="https://wa.link/75dyp7"
+            target="_blank"
+            className=" flex justify-center items-center bg-[#2e9e53] md:w-70 md:h-20 w-30 text-1xl md:text-2xl p-5 mt-7 rounded-3xl backdrop-blur-md  text-white hover:scale-105 hover:cursor-pointer hover:bg-[#37b661]"
+          >
+            <span>Solicitar Orçamento</span>
           </a>
         </div>
       </section>
@@ -38,7 +42,7 @@ export const Main = () => {
           <div className="scroll-item md:col-span-1 md:row-span-1 col-span-2 rounded-2xl overflow-hidden">
             <div className="relative w-full h-full">
               <img
-                src="/images/galeri-grid/bg2.png"
+                src="/images/galeri-grid/bg2.jpg"
                 alt="Produto destaque"
                 className="w-full h-full object-left object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
               />

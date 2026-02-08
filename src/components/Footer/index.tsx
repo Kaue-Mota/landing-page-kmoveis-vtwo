@@ -18,7 +18,7 @@ export const Footer = () => {
     flex items-center justify-center gap-3
     bg-green-500 hover:bg-amber-700
     text-white font-medium
-    px-6 py-3 rounded-lg
+      rounded-lg
     transition duration-300
     w-fit
   "

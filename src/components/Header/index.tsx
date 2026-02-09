@@ -40,7 +40,7 @@ export const Header = () => {
           </li>
           <li className="p-2 mt-5 hover:text-green-400 transition-colors duration-200 cursor-pointer">
             <Link className="underline-expand" to="/catalago">
-              Catálago
+              Catálogo
             </Link>
           </li>
           <li className="flex mr-5 mt-5 bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200 justify-center">
@@ -66,7 +66,7 @@ export const Header = () => {
           </li>
           <li className="p-2 hover:text-green-400 transition-colors duration-200 cursor-pointer">
             <Link className="underline-expand" to="/catalago">
-              Catálago
+              Catálogo
             </Link>
           </li>
           <li className="mr-5  bg-[#2E7D32] p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors duration-200">

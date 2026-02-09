@@ -28,7 +28,7 @@
   --lg-card-project-width: 220px;
   --lg-card-project-height: 250px;
 
-  --xl-card-project-width: 300px;
+  --xl-card-project-width: 200px;
   --xl-card-project-height: 350px;
 }
 
@@ -62,7 +62,8 @@
 }
 
 .menu-toggle:checked ~ .nav-slide {
-  right: 0;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 /* Animações de Scroll */

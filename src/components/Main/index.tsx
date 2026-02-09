@@ -27,7 +27,7 @@ export const Main = () => {
           <a
             href="https://wa.link/75dyp7"
             target="_blank"
-            className=" flex justify-center items-center bg-[#2e9e53] md:w-70 md:h-20 w-30 text-1xl md:text-2xl p-5 mt-7 rounded-3xl backdrop-blur-md  text-white hover:scale-105 hover:cursor-pointer hover:bg-[#37b661]"
+            className=" flex justify-center items-center bg-[#2e9e53] md:w-70 md:h-20 max-w-70 text-2xl md:text-2xl p-5 mt-7 rounded-3xl backdrop-blur-md  text-center font-bold text-white hover:scale-105 hover:cursor-pointer hover:bg-[#37b661]"
           >
             <span>Solicitar Orçamento</span>
           </a>
@@ -104,34 +104,37 @@ export const Main = () => {
 
       <h1
         ref={reviewsRef}
-        className="scroll-section text-2xl font-bold text-center mb-5 mt-20 text-neutral-600 border-t-2 border-b-neutral-600 pt-5 "
+        className="scroll-section font-extrabold text-3xl text-center mb-5 mt-20 text-neutral-600  border-b-neutral-600 pt-5 "
       >
-        Clientes Satisfeitos
+        AVALIAÇÕES
       </h1>
 
       <section className=" py-16 px-10 rounded-4xl bg-cover bg-no-repeat ">
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-row flex-wrap justify-center gap-10">
           <ReviewCard
             text="Recomendo. Excelente preço, material utilizado, acabamento, detalhes, projeto, qualidade dos serviços e entrega bem antes do prazo                     !                                                                                   "
             stars={5}
-            name="
-Valmir"
+            name="Valmir"
+            avatar="https://lh3.googleusercontent.com/a-/ALV-UjUeL2RSDGuRXHqD0ZF1DdKi5m_Yc91_azQvf4Hk0V0h7LnNe8bY=w36-h36-p-rp-mo-br100"
           />
           <ReviewCard
-            text="Nada a reclamar! Trabalho excelente!!! Desde o orçamento, quando o Edivaldo realizou um 3d de todos os móveis sabíamos que era um profissional diferenciado, tudo realizado com muito profissionalismo, qualidade e ótimo acabamento. Deixou o ambiente super limpo após a instalação, isso é algo que vemos raramente nas empresas hoje em dia."
+            text="Nada a reclamar! Desde o orçamento com o projeto 3D já deu pra ver o profissionalismo. Móveis com ótimo acabamento, qualidade excelente e ainda deixaram tudo limpo após a instalação, algo raro hoje em dia."
             stars={5}
             name="Laura"
+            avatar="https://lh3.googleusercontent.com/a-/ALV-UjXHzd1MvzCxnLSCoSs_GU7hAK6UCcNLiTVJkb4pauK0c9ZVcBYWIQ=w36-h36-p-rp-mo-ba2-br100"
           />
           <ReviewCard
             text="Excelente profissional, material de boa qualidade, entrega super rapida, preço muito bom,tudo de primeira linha, super recomendo!"
             stars={5}
             name="Emídio"
+            avatar="https://lh3.googleusercontent.com/a-/ALV-UjUiVwlg5AxS0ROWRWQQqg2opc2y2ZbYK6QwxfIM_C8eRih9QEC3yg=w36-h36-p-rp-mo-br100"
           />
 
           <ReviewCard
             text="Quer fazer seus móveis planejado com alguém talentoso, honesto e pontual? Então faça com ele! Serviço impecável, preço justo e qualidade excelente. Pode fazer com ele sem medo. Profissional de verdade."
             stars={5}
             name="Leonardo"
+            avatar="https://lh3.googleusercontent.com/a-/ALV-UjVjNy5e0pRU7nYbQEUX3YNQOHU8WK_WVjV8bdt4tyegpbbQGq0F=w36-h36-p-rp-mo-br100"
           />
         </div>
       </section>

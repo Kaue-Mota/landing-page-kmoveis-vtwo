@@ -28,7 +28,7 @@ export const ReviewCard = ({ text, stars, name, avatar }: ReviewCardProps) => {
   return (
     <div
       ref={cardRef}
-      className="scroll-item w-150 min-h-100 max-h-70 bg-[rgba(80,80,80,0)] border-b  p-6 w- hover:scale-105 transition-transform duration-300 backdrop-blur-lg  flex flex-col items-start"
+      className="scroll-item w-150 min-h-70  bg-[rgba(80,80,80,0)] border-b  p-6 w- hover:scale-105 transition-transform duration-300 backdrop-blur-lg  flex flex-col items-start"
     >
       <div className="flex justify-center items-center gap-5">
       {/* Avatar */}

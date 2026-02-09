@@ -1,22 +1,52 @@
-@import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 :root {
-    --fonte-principal: 'Ubuntu', sans-serif;
-   font-family: var(--fonte-principal);
-    background-color: #ffffff;
-    color: #333333;
+
+  --card-project-width: 100px;
+    --card-project-height: 150px;
+ 
+  @media screen and (min-width: 332px) {
+    --card-project-width: 140px;
+    --card-project-height: 150px;
+    
+  }
+
+    @media screen and (min-width: 452px) {
+    --card-project-width: 200px;
+    --card-project-height: 150px;
+    
+  }
+  
+
+  --sm-card-project-width: 140px;
+  --sm-card-project-height: 200px;
+
+  --md-card-project-width: 180px;
+  --md-card-project-height: 200px;
+
+  --lg-card-project-width: 220px;
+  --lg-card-project-height: 250px;
+
+  --xl-card-project-width: 300px;
+  --xl-card-project-height: 350px;
+}
+
+:root {
+  --fonte-principal: "Ubuntu", sans-serif;
+  font-family: var(--fonte-principal);
+  background-color: #ffffff;
+  color: #333333;
 }
 
 /* Animação de underline expandindo */
 .underline-expand {
   position: relative;
-  display: inline-block;
+  
 }
 
 .underline-expand::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 50%;
@@ -28,12 +58,12 @@
 }
 
 .underline-expand:hover::after {
-  width: 100%;
+  width: 70%;
 }
 
-  .menu-toggle:checked ~ .nav-slide {
-      right: 0;
-   }
+.menu-toggle:checked ~ .nav-slide {
+  right: 0;
+}
 
 /* Animações de Scroll */
 .scroll-section {

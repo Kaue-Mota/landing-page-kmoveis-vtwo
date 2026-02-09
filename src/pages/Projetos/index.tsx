@@ -9,6 +9,8 @@ type Project = {
 
 export const Projetos = () => {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [activeCategory, setActiveCategory] = useState<string>("Todos");
+
   const galleryRef = useScrollAnimationChildrenCatalago(projects);
 
   useEffect(() => {
@@ -17,10 +19,17 @@ export const Projetos = () => {
       .then((data) => setProjects(data.projects));
   }, []);
 
+  const filteredProjects =
+    activeCategory === "Todos"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
+
   return (
-    <section className="bg-gray-100 w-screen  my-40 ">
+    <section ref={galleryRef} className="min-h-screen pb-20 my-40">
+      {/* BOTÕES DE CATEGORIA */}
       <div className="flex border-b border-b-gray-300 sm:mb-30 gap-3 lg:gap-5 flex-wrap justify-center items-center  px-1 bg-gray-100 w-screen h-100">
         <button
+          onClick={() => setActiveCategory("Quarto")}
           className="hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5 flex justify-center items-center  
         w-(--card-project-width) h-(--card-project-height)
         sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
@@ -35,6 +44,7 @@ export const Projetos = () => {
         </button>
 
         <button
+          onClick={() => setActiveCategory("Cozinha")}
           className="hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5 flex justify-center items-center  
         w-(--card-project-width) h-(--card-project-height)
         sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
@@ -49,6 +59,7 @@ export const Projetos = () => {
         </button>
 
         <button
+          onClick={() => setActiveCategory("Banheiro")}
           className="hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5 flex justify-center items-center  
         w-(--card-project-width) h-(--card-project-height)
         sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
@@ -63,6 +74,7 @@ export const Projetos = () => {
         </button>
 
         <button
+          onClick={() => setActiveCategory("Sala")}
           className="hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5 flex justify-center items-center  
         w-(--card-project-width) h-(--card-project-height)
         sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
@@ -77,14 +89,21 @@ export const Projetos = () => {
         </button>
       </div>
 
-      <div ref={galleryRef} className="md:bg-gray-200 md:mx-20 rounded-[20px] columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 p-7 ">
-        {projects.map((item) => (
-          <img
-            key={item.id}
-            src={item.imageUrl}
-            alt=""
-            className="scroll-item border-2 border-white w-full rounded-xl break-inside-avoid transition duration-300 hover:scale-[1.02] hover:shadow-xl"
-          />
+      {/* GRID ESTILO GOOGLE IMAGENS */}
+
+      <div className="columns-2 md:px-20 px-2 py-10 sm:columns-3 md:columns-4 gap-4 space-y-4">
+        {filteredProjects.map((project) => (
+          <div 
+            key={project.id}
+            className="break-inside-avoid overflow-hidden rounded-xl shadow-md hover:shadow-xl transition"
+          >
+            <img
+              src={project.imageUrl}
+              alt={project.category}
+              className="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
         ))}
       </div>
     </section>

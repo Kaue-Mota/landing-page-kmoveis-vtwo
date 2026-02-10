@@ -32,7 +32,7 @@ export const Projetos = () => {
 
       <div className="flex  gap-3 lg:gap-5 flex-wrap justify-center items-center  px-1  w-full h-100">
         <button
-          onClick={() => setActiveCategory("Quarto")}
+          onClick={() => setActiveCategory("Todos")}
           className="hidden xl:flex hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5  justify-center items-center  
         w-(--card-project-width) h-(--card-project-height)
         sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
@@ -42,7 +42,7 @@ export const Projetos = () => {
         >
           <span className="bg-[rgba(255,255,255,0.02)] overflow-hidden  w-full h-full absolute  backdrop-blur-[2px] hover:backdrop-blur-[0px]  transition-[backdrop-filter] duration-200 ease-in-out rounded-[20px]"></span>
           <span className="text-white h-10 flex items-center justify-center w-20 lg:w-40 lg:h-20 lg:text-2xl bg-[rgba(200,200,200,.1)] backdrop-blur-sm border-2 p-1 rounded-[20px]">
-            TODOS
+            Todos
           </span>
         </button>
 

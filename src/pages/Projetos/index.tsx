@@ -7,12 +7,19 @@ type Project = {
   category: string;
 };
 
+const CATEGORIES = ["Todos", "Quarto", "Cozinha", "Banheiro", "Sala"];
+
 export const Projetos = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("Todos");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [lightboxClosing, setLightboxClosing] = useState(false);
 
-  const galleryRef = useScrollAnimationChildrenCatalago(projects);
+  const galleryRef = useScrollAnimationChildrenCatalago(
+    projects.filter((p) =>
+      activeCategory === "Todos" ? true : p.category === activeCategory,
+    ),
+  );
 
   useEffect(() => {
     fetch("/data/projects.json")
@@ -25,128 +32,134 @@ export const Projetos = () => {
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
+  const openLightbox = (url: string) => {
+    setSelectedImage(url);
+    setLightboxClosing(false);
+  };
+
+  const closeLightbox = () => {
+    setLightboxClosing(true);
+    setTimeout(() => {
+      setSelectedImage(null);
+      setLightboxClosing(false);
+    }, 250);
+  };
+
   return (
-    <section ref={galleryRef} className="min-h-screen pb-20 my-40">
-      {/* BOTÕES DE CATEGORIA */}
-      <h1 className="text-center font-extrabold text-5xl">FILTRAR</h1>
+    <section className="min-h-screen bg-[#f9f7f4]">
 
-      <div className="flex  gap-3 lg:gap-5 flex-wrap justify-center items-center  px-1  w-full h-100">
-        <button
-          onClick={() => setActiveCategory("Todos")}
-          className="hidden xl:flex hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5  justify-center items-center  
-        w-(--card-project-width) h-(--card-project-height)
-        sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
-        md:w-(--md-card-project-width) md:h-(--md-card-project-height)
-        lg:w-(--lg-card-project-width) lg:h-(--lg-card-project-height)
-        xl:w-(--xl-card-project-width) xl:h-(--xl-card-project-height)  rounded-[20px] bg-[linear-gradient(-90deg,transparent_0%,rgba(75,185,247,.3)_100%),url('/images/buttons-bg/quarto.png')] bg-cover bg-right bg-100% "
-        >
-          <span className="bg-[rgba(255,255,255,0.02)] overflow-hidden  w-full h-full absolute  backdrop-blur-[2px] hover:backdrop-blur-[0px]  transition-[backdrop-filter] duration-200 ease-in-out rounded-[20px]"></span>
-          <span className="text-white h-10 flex items-center justify-center w-20 lg:w-40 lg:h-20 lg:text-2xl bg-[rgba(200,200,200,.1)] backdrop-blur-sm border-2 p-1 rounded-[20px]">
-            Todos
-          </span>
-        </button>
-
-        <button
-          onClick={() => setActiveCategory("Quarto")}
-          className="hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5 flex justify-center items-center  
-        w-(--card-project-width) h-(--card-project-height)
-        sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
-        md:w-(--md-card-project-width) md:h-(--md-card-project-height)
-        lg:w-(--lg-card-project-width) lg:h-(--lg-card-project-height)
-        xl:w-(--xl-card-project-width) xl:h-(--xl-card-project-height)  rounded-[20px] bg-[linear-gradient(-90deg,transparent_0%,rgba(75,185,247,.3)_100%),url('/images/buttons-bg/quarto.png')] bg-cover bg-right bg-100% "
-        >
-          <span className="bg-[rgba(255,255,255,0.02)] overflow-hidden  w-full h-full absolute  backdrop-blur-[2px] hover:backdrop-blur-[0px]  transition-[backdrop-filter] duration-200 ease-in-out rounded-[20px]"></span>
-          <span className="text-white h-10 flex items-center justify-center w-20 lg:w-40 lg:h-20 lg:text-2xl bg-[rgba(200,200,200,.1)] backdrop-blur-sm border-2 p-1 rounded-[20px]">
-            Quarto
-          </span>
-        </button>
-
-        <button
-          onClick={() => setActiveCategory("Cozinha")}
-          className="hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5 flex justify-center items-center  
-        w-(--card-project-width) h-(--card-project-height)
-        sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
-        md:w-(--md-card-project-width) md:h-(--md-card-project-height)
-        lg:w-(--lg-card-project-width) lg:h-(--lg-card-project-height)
-        xl:w-(--xl-card-project-width) xl:h-(--xl-card-project-height)  rounded-[20px] bg-[linear-gradient(-90deg,transparent_0%,rgba(34,197,94,.3)_100%),url('/images/buttons-bg/cozinha.png')] bg-cover bg-center bg-100% "
-        >
-          <span className="bg-[rgba(255,255,255,0.02)] overflow-hidden  w-full h-full absolute  backdrop-blur-[2px] hover:backdrop-blur-[0px]  transition-[backdrop-filter] duration-200 ease-in-out rounded-[20px]"></span>
-          <span className="text-white h-10 flex items-center justify-center w-20 lg:w-40 lg:h-20 lg:text-2xl bg-[rgba(200,200,200,.1)] backdrop-blur-sm border-2 p-1 rounded-[20px]">
-            Cozinha
-          </span>
-        </button>
-
-        <button
-          onClick={() => setActiveCategory("Banheiro")}
-          className="hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5 flex justify-center items-center  
-        w-(--card-project-width) h-(--card-project-height)
-        sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
-        md:w-(--md-card-project-width) md:h-(--md-card-project-height)
-        lg:w-(--lg-card-project-width) lg:h-(--lg-card-project-height)
-        xl:w-(--xl-card-project-width) xl:h-(--xl-card-project-height)  rounded-[20px] bg-[linear-gradient(-90deg,transparent_0%,rgba(30,69,247,0.3)_100%),url('/images/buttons-bg/banheiro.png')] bg-cover bg-right bg-100% "
-        >
-          <span className="bg-[rgba(255,255,255,0.02)] overflow-hidden  w-full h-full absolute  backdrop-blur-[2px] hover:backdrop-blur-[0px]  transition-[backdrop-filter] duration-200 ease-in-out rounded-[20px]"></span>
-          <span className="text-white h-10 flex items-center justify-center w-20 lg:w-40 lg:h-20 lg:text-2xl bg-[rgba(200,200,200,.1)] backdrop-blur-sm border-2 p-1 rounded-[20px]">
-            Banheiro
-          </span>
-        </button>
-
-        <button
-          onClick={() => setActiveCategory("Sala")}
-          className="hover:scale-101 underline-expand transition-transform duration-300 cursor-pointer backdrop-blur-sm p-5 flex justify-center items-center  
-        w-(--card-project-width) h-(--card-project-height)
-        sm:w-(--sm-card-project-width) sm:h-(--sm-card-project-height)
-        md:w-(--md-card-project-width) md:h-(--md-card-project-height)
-        lg:w-(--lg-card-project-width) lg:h-(--lg-card-project-height)
-        xl:w-(--xl-card-project-width) xl:h-(--xl-card-project-height)  rounded-[20px] bg-[linear-gradient(-90deg,transparent_0%,rgba(253,122,0,0.3)_100%),url('/images/buttons-bg/sala.png')] bg-cover bg-left bg-100% "
-        >
-          <span className="bg-[rgba(255,255,255,0.02)] overflow-hidden  w-full h-full absolute  backdrop-blur-[2px] hover:backdrop-blur-[0px]  transition-[backdrop-filter] duration-200 ease-in-out rounded-[20px]"></span>
-          <span className="text-white h-10 flex items-center justify-center w-20 lg:w-40 lg:h-20 lg:text-2xl bg-[rgba(200,200,200,.1)] backdrop-blur-sm border-2 p-1 rounded-[20px]">
-            Sala
-          </span>
-        </button>
+      {/* ── Dark banner header ── */}
+      <div className="relative bg-[#0b1a0d] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0b1a0d]" />
+        <div className="relative flex flex-col items-center justify-center pt-28 pb-12 px-6 text-center">
+          <span className="badge-green mb-4">Portfólio</span>
+          <h1 className="text-4xl md:text-5xl font-black text-white">
+            Nossos Projetos
+          </h1>
+        </div>
       </div>
 
-      {/* GRID ESTILO GOOGLE IMAGENS */}
-      <h1 className="text-center font-extrabold text-5xl">GALERIA</h1>
+      <div className="max-w-7xl mx-auto px-5 md:px-10 py-12">
 
-      <div className="columns-2 md:px-20 px-5 py-10 sm:columns-3 md:columns-4 gap-4 space-y-4">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            className="break-inside-avoid overflow-hidden rounded-xl shadow-md active:max-w-100 hover:shadow-xl transition"
-          >
-            <img
-              src={project.imageUrl}
-              alt={project.category}
-              className="w-full h-auto object-cover"
-              loading="lazy"
-              onClick={() => setSelectedImage(project.imageUrl)}
-            />
-          </div>
-        ))}
-
-        {selectedImage && (
-          <div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-105"
-            onClick={() => setSelectedImage(null)}
-          >
-            <img
-              src={selectedImage}
-              className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl
-                 transition-all duration-300 scale-100"
-              onClick={(e) => e.stopPropagation()}
-            />
-
+        {/* ── Category filter pills ── */}
+        <div className="flex flex-wrap justify-center gap-3 mb-6">
+          {CATEGORIES.map((cat) => (
             <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-6 text-white text-3xl"
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`cat-pill ${
+                activeCategory === cat ? "cat-pill-active" : "cat-pill-inactive"
+              }`}
             >
-              ✕
+              {cat}
             </button>
-          </div>
-        )}
+          ))}
+        </div>
+
+        {/* Count indicator */}
+        <p className="text-center text-gray-400 text-sm mb-10 font-medium">
+          {filteredProjects.length}{" "}
+          {filteredProjects.length === 1 ? "projeto encontrado" : "projetos encontrados"}
+        </p>
+
+        {/* ── Masonry grid ── */}
+        <div
+          ref={galleryRef}
+          className="columns-2 sm:columns-3 lg:columns-4 gap-4 space-y-4"
+        >
+          {filteredProjects.map((project, i) => (
+            <div
+              key={project.id}
+              className="scroll-item break-inside-avoid overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer group relative"
+              style={{ "--delay": `${(i % 8) * 0.04}s` } as React.CSSProperties}
+              onClick={() => openLightbox(project.imageUrl)}
+            >
+              <img
+                src={project.imageUrl}
+                alt={project.category}
+                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                <span className="text-white text-4xl font-thin opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  ⊕
+                </span>
+              </div>
+              {/* Category badge on hover */}
+              <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="badge-green text-[10px]">
+                  {project.category}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* ── Lightbox ── */}
+      {selectedImage && (
+        <div
+          className={`
+            fixed inset-0 z-50 flex items-center justify-center
+            transition-all duration-300
+            ${lightboxClosing
+              ? "bg-black/0 backdrop-blur-none"
+              : "bg-black/88 backdrop-blur-md"
+            }
+          `}
+          onClick={closeLightbox}
+        >
+          <img
+            src={selectedImage}
+            className={`
+              max-h-[88vh] max-w-[88vw] rounded-2xl shadow-2xl object-contain
+              transition-all duration-300
+              ${lightboxClosing
+                ? "scale-90 opacity-0"
+                : "scale-100 opacity-100 lightbox-img-enter"
+              }
+            `}
+            onClick={(e) => e.stopPropagation()}
+            alt="Projeto ampliado"
+          />
+
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="
+              absolute top-5 right-5
+              w-10 h-10 rounded-full
+              bg-white/15 hover:bg-white/30 backdrop-blur-sm
+              text-white flex items-center justify-center
+              text-lg transition-all duration-200 hover:scale-110
+            "
+            aria-label="Fechar"
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </section>
   );
 };

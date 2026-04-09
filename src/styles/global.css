@@ -1,76 +1,112 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
+/* ================================================
+   DESIGN TOKENS
+================================================ */
 :root {
+  --font-main: "Ubuntu", sans-serif;
+  font-family: var(--font-main);
+  background-color: #f9f7f4;
+  color: #1a1a1a;
+  scroll-behavior: smooth;
 
+  /* Easing */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Card dimensions */
   --card-project-width: 100px;
-    --card-project-height: 150px;
- 
-  @media screen and (min-width: 332px) {
-    --card-project-width: 140px;
-    --card-project-height: 150px;
-    
-  }
-
-    @media screen and (min-width: 452px) {
-    --card-project-width: 200px;
-    --card-project-height: 150px;
-    
-  }
-  
+  --card-project-height: 150px;
 
   --sm-card-project-width: 140px;
   --sm-card-project-height: 200px;
-
   --md-card-project-width: 180px;
   --md-card-project-height: 200px;
-
   --lg-card-project-width: 220px;
   --lg-card-project-height: 250px;
-
   --xl-card-project-width: 200px;
   --xl-card-project-height: 350px;
 }
 
-:root {
-  --fonte-principal: "Ubuntu", sans-serif;
-  font-family: var(--fonte-principal);
-  background-color: #ffffff;
-  color: #333333;
+@media screen and (min-width: 332px) {
+  :root {
+    --card-project-width: 140px;
+    --card-project-height: 150px;
+  }
 }
 
-/* Animação de underline expandindo */
-.underline-expand {
-  position: relative;
-  
+@media screen and (min-width: 452px) {
+  :root {
+    --card-project-width: 200px;
+    --card-project-height: 150px;
+  }
 }
 
-.underline-expand::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background-color: #22c55e;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+/* ================================================
+   CUSTOM SCROLLBAR
+================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f9f7f4; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22c55e, #16a34a);
+  border-radius: 999px;
 }
 
-.underline-expand:hover::after {
-  width: 70%;
+/* ================================================
+   KEYFRAMES
+================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.menu-toggle:checked ~ .nav-slide {
-  left: 50%;
-  transform: translate(-50%);
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
 }
 
-/* Animações de Scroll */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(34,197,94,0.25); }
+  50%       { box-shadow: 0 0 45px rgba(34,197,94,0.55); }
+}
+
+@keyframes scrollDot {
+  0%   { transform: translateX(-50%) translateY(0); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(12px); opacity: 0; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================================================
+   SCROLL ANIMATION BASE CLASSES
+================================================ */
 .scroll-section {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transform: translateY(40px);
+  transition: opacity 0.85s var(--ease-expo),
+              transform 0.85s var(--ease-expo);
+  transition-delay: var(--delay, 0s);
 }
 
 .scroll-section.animate-in {
@@ -80,16 +116,336 @@
 
 .scroll-item {
   opacity: 0;
-  transform: scale(0.95);
-  transition: all 0.6s ease-out;
+  transform: translateY(28px) scale(0.97);
+  transition: opacity 0.7s var(--ease-expo),
+              transform 0.7s var(--ease-expo);
+  transition-delay: var(--delay, 0s);
 }
 
-.scroll-item.animate-in {
-  opacity: 1;
-  transform: scale(1);
-}
-
+.scroll-item.animate-in,
 .scroll-item.show {
   opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ================================================
+   HERO WORD REVEAL
+================================================ */
+.hero-word {
+  display: block;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.65s var(--ease-expo),
+              transform 0.65s var(--ease-expo);
+  transition-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.hero-words-visible .hero-word {
+  opacity: 1;
   transform: translateY(0);
+}
+
+/* ================================================
+   GRADIENT TEXT
+================================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================
+   SHIMMER CTA BUTTON
+================================================ */
+.btn-shimmer {
+  background: linear-gradient(
+    90deg,
+    #1b5e20 0%,
+    #2e9e53 30%,
+    #4ade80 50%,
+    #2e9e53 70%,
+    #1b5e20 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+  transition: transform 0.3s var(--ease-back),
+              box-shadow 0.3s ease;
+}
+
+.btn-shimmer:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 16px 40px rgba(34,197,94,0.45);
+  animation-play-state: paused;
+}
+
+/* ================================================
+   FLOAT ANIMATION
+================================================ */
+.float-anim {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ================================================
+   PULSE GLOW
+================================================ */
+.pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* ================================================
+   UNDERLINE EXPAND
+================================================ */
+.underline-expand {
+  position: relative;
+}
+
+.underline-expand::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+  transition: width 0.35s var(--ease-expo);
+  transform: translateX(-50%);
+}
+
+.underline-expand:hover::after { width: 100%; }
+
+/* ================================================
+   IMAGE ZOOM CONTAINER
+================================================ */
+.img-zoom { overflow: hidden; }
+
+.img-zoom img {
+  transition: transform 0.6s var(--ease-expo);
+  will-change: transform;
+}
+
+.img-zoom:hover img { transform: scale(1.07); }
+
+/* ================================================
+   CARD LIFT HOVER
+================================================ */
+.card-lift {
+  transition: transform 0.35s var(--ease-expo),
+              box-shadow 0.35s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 24px 56px rgba(0,0,0,0.13);
+}
+
+/* ================================================
+   GLASS EFFECTS
+================================================ */
+.glass {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.65);
+}
+
+.glass-dark {
+  background: rgba(8,8,8,0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ================================================
+   BADGE
+================================================ */
+.badge-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: rgba(34,197,94,0.1);
+  color: #16a34a;
+  border: 1px solid rgba(34,197,94,0.25);
+}
+
+/* ================================================
+   STAT NUMBER
+================================================ */
+.stat-number {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================
+   HAMBURGER MORPHING
+================================================ */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.hamburger-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.ham-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.35s var(--ease-expo),
+              opacity 0.25s ease,
+              width 0.3s ease;
+  transform-origin: center;
+}
+
+.ham-open .ham-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.ham-open .ham-line:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.ham-open .ham-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ================================================
+   SCROLL INDICATOR (hero)
+================================================ */
+.scroll-indicator {
+  width: 22px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,0.45);
+  border-radius: 11px;
+  position: relative;
+}
+
+.scroll-indicator::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 4px;
+  height: 7px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+  animation: scrollDot 1.6s ease-in-out infinite;
+}
+
+/* ================================================
+   ACTIVE NAV LINK
+================================================ */
+.nav-link-active {
+  color: #16a34a !important;
+  font-weight: 600;
+}
+
+.nav-link-active.underline-expand::after {
+  width: 100%;
+}
+
+/* ================================================
+   CATEGORY FILTER PILLS
+================================================ */
+.cat-pill {
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s var(--ease-expo);
+  user-select: none;
+}
+
+.cat-pill-inactive {
+  background: white;
+  color: #4b5563;
+  border-color: #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.cat-pill-inactive:hover {
+  border-color: #4ade80;
+  color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(34,197,94,0.15);
+}
+
+.cat-pill-active {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 6px 22px rgba(34,197,94,0.4);
+  transform: translateY(-2px);
+}
+
+/* ================================================
+   LIGHTBOX
+================================================ */
+.lightbox-img-enter {
+  animation: scaleIn 0.3s var(--ease-expo) forwards;
+}
+
+/* ================================================
+   GRADIENT DECORATIVE LINE
+================================================ */
+.gradient-line {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #22c55e, #16a34a, transparent);
+  border: none;
+  margin: 0;
+}
+
+/* ================================================
+   SECTION CTA BUTTON (outline variant)
+================================================ */
+.btn-outline-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 16px;
+  border: 2px solid #16a34a;
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.3s ease, color 0.3s ease,
+              transform 0.3s var(--ease-back), box-shadow 0.3s ease;
+}
+
+.btn-outline-green:hover {
+  background: #16a34a;
+  color: white;
+  transform: scale(1.04) translateY(-2px);
+  box-shadow: 0 10px 28px rgba(34,197,94,0.3);
+}
+
+/* ================================================
+   LEGACY COMPAT
+================================================ */
+.menu-toggle:checked ~ .nav-slide {
+  left: 50%;
+  transform: translate(-50%);
 }

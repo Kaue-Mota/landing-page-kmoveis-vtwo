@@ -10,49 +10,61 @@ interface ReviewCardProps {
 export const ReviewCard = ({ text, stars, name, avatar }: ReviewCardProps) => {
   const cardRef = useScrollAnimation();
 
-  const renderStars = (count: number) => {
-    return (
-      <div className="flex gap-1">
+  return (
+    <div
+      ref={cardRef}
+      className="
+        scroll-item card-lift
+        bg-white rounded-3xl p-6
+        shadow-[0_4px_28px_rgba(0,0,0,0.07)]
+        border border-gray-100
+        flex flex-col gap-4
+        relative overflow-hidden
+      "
+    >
+      {/* Decorative large quote mark */}
+      <div
+        className="absolute -top-2 right-4 text-8xl text-green-100 font-black leading-none select-none pointer-events-none"
+        aria-hidden
+      >
+        "
+      </div>
+
+      {/* Star rating */}
+      <div className="flex gap-0.5 z-10">
         {[...Array(5)].map((_, i) => (
           <span
             key={i}
-            className={i < count ? "text-bl text-lg" : "text-gray-300 text-lg"}
+            className={`text-lg ${i < stars ? "text-yellow-400" : "text-gray-200"}`}
           >
             ★
           </span>
         ))}
       </div>
-    );
-  };
 
-  return (
-    <div
-      ref={cardRef}
-      className="scroll-item w-150 min-h-70  bg-[rgba(80,80,80,0)] border-b  p-6 w- hover:scale-105 transition-transform duration-300 backdrop-blur-lg  flex flex-col items-start"
-    >
-      <div className="flex justify-center items-center gap-5">
-      {/* Avatar */}
-      {avatar && (
-        <img
-          src={avatar}
-          alt={name || "Cliente"}
-          className="w-14 h-14 rounded-full object-cover mb-3 border-2 border-white shadow-md"
-        />
-      )}
-
-      {/* Nome do cliente (opcional) */}
-      {name && (
-        <p className="text-center font-semibold text-neutral-600 "> {name}</p>
-      )}
-      </div>
-
-      {/* Estrelas */}
-      <div className="flex justify-center mb-4">{renderStars(stars)}</div>
-
-      {/* Texto da avaliação */}
-      <p className="text-neutral-600 drop-shadow-md  pb-5 text-start ">
+      {/* Review text */}
+      <p className="text-gray-600 text-sm leading-relaxed flex-1 z-10">
         "{text}"
       </p>
+
+      {/* Author */}
+      <div className="flex items-center gap-3 pt-3 border-t border-gray-100 z-10">
+        {avatar && (
+          <img
+            src={avatar}
+            alt={name || "Cliente"}
+            className="w-10 h-10 rounded-full object-cover ring-2 ring-green-100 flex-shrink-0"
+          />
+        )}
+        {name && (
+          <div>
+            <p className="font-semibold text-gray-800 text-sm leading-tight">
+              {name}
+            </p>
+            <p className="text-xs text-gray-400 mt-0.5">Cliente verificado ✓</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -49,9 +49,9 @@ export const Projetos = () => {
     <section className="min-h-screen bg-[#f9f7f4]">
 
       {/* ── Dark banner header ── */}
-      <div className="relative bg-[#0b1a0d] overflow-hidden">
+      <div className="relative  bg-[#0b1a0d] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0b1a0d]" />
-        <div className="relative flex flex-col items-center justify-center pt-28 pb-12 px-6 text-center">
+        <div className="relative  flex flex-col items-center justify-center pt-40 pb-12 px-6 text-center">
           <span className="badge-green mb-4">Portfólio</span>
           <h1 className="text-4xl md:text-5xl font-black text-white">
             Nossos Projetos

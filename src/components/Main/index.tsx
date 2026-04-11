@@ -84,16 +84,16 @@ export const Main = () => {
         {/* Subtle green tint */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/20 via-transparent to-transparent rounded-3xl" />
 
-        {/* Floating badge — 30+ anos */}
+        {/* Floating badge — 20+ anos */}
         <div
           className={`
-            absolute top-24 right-5 float-anim
+            absolute bottom-8 right-8 float-anim
             transition-all duration-700 delay-700
-            ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}
+            ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
           `}
         >
           <div className="glass-dark rounded-2xl px-5 py-4 text-center min-w-[72px]">
-            <p className="text-3xl font-black text-white leading-none">30+</p>
+            <p className="text-3xl font-black text-white leading-none">20+</p>
             <p className="text-[10px] uppercase tracking-widest text-white/70 mt-1">
               Anos
             </p>
